@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="401f1cf0-0adf-40ed-a122-f249708c36de" name="Changes" comment="#1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operations.go" beforeDir="false" afterPath="$PROJECT_DIR$/operations.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +37,7 @@
     "git-widget-placeholder": "master",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Konstantin",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

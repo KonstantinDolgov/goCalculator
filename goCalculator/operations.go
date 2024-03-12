@@ -1,11 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"regexp"
+)
 
 func operations() {
 	var a, b int
 	var oper string
-	fmt.Scan(&a, &oper, &b)
+	reader := bufio.NewReader(os.Stdin)
+	text, _ := reader.ReadString('\n')
+	//text = strings.TrimSpace(text)
+	//toNumber, _ := strconv.Atoi(text)
+	operands := regexp.MustCompile(`[+\-*/]`).Split(text, 0)
+	if len(operands) > 2 {
+		panic("формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)")
+	}
 	switch oper {
 	case "+":
 		fmt.Println(add(a, b))
