@@ -5,27 +5,44 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"strings"
 )
 
 func operations() {
 	var a, b int
-	var oper string
+	//var oper string
 	reader := bufio.NewReader(os.Stdin)
 	text, _ := reader.ReadString('\n')
 	//text = strings.TrimSpace(text)
-	//toNumber, _ := strconv.Atoi(text)
-	operands := regexp.MustCompile(`[+\-*/]`).Split(text, 0)
-	if len(operands) > 2 {
-		panic("формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)")
+	text = strings.ReplaceAll(strings.TrimSpace(text), " ", "")
+	operandsTemp := regexp.MustCompile(`[+\-*/]`).Split(text, -1)
+	var operands []string
+	for _, v := range operandsTemp {
+		if v != "" {
+			operands = append(operands, v)
+		}
 	}
-	switch oper {
-	case "+":
+	fmt.Println(operands)
+	fmt.Println(len(operands))
+	if len(operands) > 2 {
+		panic("Формат математической операции не удовлетворяет заданию " +
+			"— два операнда и один оператор (+, -, /, *)")
+	}
+	if len(operands) < 2 {
+		panic("Строка не является математической операцией")
+	}
+	//oper = "+"
+	//if strings.Contains(text, oper) {
+	//	fmt.Println("plus")
+	//}
+	switch {
+	case strings.Contains(text, "+"):
 		fmt.Println(add(a, b))
-	case "-":
+	case strings.Contains(text, "-"):
 		fmt.Println(sub(a, b))
-	case "*":
+	case strings.Contains(text, "*"):
 		fmt.Println(mult(a, b))
-	case "/":
+	case strings.Contains(text, "/"):
 		fmt.Println(div(a, b))
 	}
 }

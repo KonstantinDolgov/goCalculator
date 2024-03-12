@@ -3,6 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Введите через пробел:")
+	fmt.Println("Введите выражение:")
 	operations()
 }
