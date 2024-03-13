@@ -36,7 +36,7 @@ var romans = map[string]int{
 	"XLV":    45,
 	"XLVII":  48,
 	"XLIX":   49,
-	"L":      49,
+	"L":      50,
 	"LIV":    54,
 	"LVI":    56,
 	"LX":     60,
@@ -56,17 +56,4 @@ func isRoman(r string) bool {
 		res = ok
 	}
 	return res
-}
-
-func convertToArabic(r string) int {
-	return romans[r]
-}
-
-func convertToRoman(r int) (res string) {
-	for key, val := range romans {
-		if val == r {
-			res = key
-		}
-	}
-	return
 }
