@@ -26,11 +26,12 @@ func logic() {
 		panic("Формат математической операции не удовлетворяет заданию " +
 			"— два операнда и один оператор (+, -, /, *)")
 	}
-	if len(operands) < 2 {
+	if len(operands) < 2 || ((!isRoman(operands[0]) && !isArabic(operands[0])) ||
+		(!isRoman(operands[1])) && !isArabic(operands[1])) {
 		panic("Строка не является математической операцией")
 	}
 
-	if (!isRoman(operands[0]) && isRoman(operands[1])) || (isRoman(operands[0]) && !isRoman(operands[1])) {
+	if (isArabic(operands[0]) && isRoman(operands[1])) || (isRoman(operands[0]) && isArabic(operands[1])) {
 		panic("Используются одновременно разные системы счисления!")
 	}
 
@@ -42,7 +43,7 @@ func logic() {
 		fmt.Println(convertToRoman(res))
 	}
 
-	if !isRoman(operands[0]) && !isRoman(operands[1]) {
+	if isArabic(operands[0]) && isArabic(operands[1]) {
 		num1, _ := strconv.Atoi(operands[0])
 		num2, _ := strconv.Atoi(operands[1])
 		if num1 > 10 || num2 > 10 {
@@ -50,6 +51,15 @@ func logic() {
 		}
 		fmt.Println(operations(num1, num2))
 	}
+}
+
+func isArabic(operand string) bool {
+	res := false
+	_, err := strconv.Atoi(operand)
+	if err == nil {
+		res = true
+	}
+	return res
 }
 
 func convertToArabic(r1, r2 string) (int, int) {
